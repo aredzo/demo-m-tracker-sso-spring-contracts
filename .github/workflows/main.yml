@@ -24,11 +24,16 @@ jobs:
         - name: Build with Maven
           run: mvn -B package --file pom.xml
         - name: Copy artifacts
-          run: mkdir staging && cp target/*.jar staging
-        - name: Upload package with contracts to Bintray
+          run: mkdir artifacts && cp target/*.jar artifacts && ls artifacts
+#         - name: Get version
+#           run: |
+#             VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
+#             echo "::set-output name=version::$VERSION"
+#           id: get_version
+        - name: Upload packages with contracts to Bintray
           uses: bpicode/github-action-upload-bintray@master
           with:
-            file: ./mkdir/*.jar
+            file: ./artifacts/*.jar
             api_user: example-user
             api_key: ${{ secrets.BINTRAY_KEY }} # An API key can be obtained from the user profile page.
             repository_user: aredzo
@@ -36,4 +41,5 @@ jobs:
             package: mtracker-sso-external
             version: '0.0.1'
             publish: 1
+            upload_path: artifact/test
             calculate_metadata: true # Schedule metadata calculation after upload
