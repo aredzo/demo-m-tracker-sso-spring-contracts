@@ -25,21 +25,22 @@ jobs:
           run: mvn -B package --file pom.xml
         - name: Copy artifacts
           run: mkdir artifacts && cp target/*.jar artifacts && ls artifacts
-#         - name: Get version
-#           run: |
-#             VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
-#             echo "::set-output name=version::$VERSION"
-#           id: get_version
-        - name: Upload packages with contracts to Bintray
-          uses: bpicode/github-action-upload-bintray@master
+        - name: Deploy to Bintray
+          uses: simontunnat/action-maven-deploy@v1
           with:
-            file: ./artifacts/*.jar
-            api_user: example-user
-            api_key: ${{ secrets.BINTRAY_KEY }} # An API key can be obtained from the user profile page.
-            repository_user: aredzo
-            repository: mtracker
-            package: mtracker-sso-external
-            version: '0.0.1'
-            publish: 1
-            upload_path: artifact/test
-            calculate_metadata: true # Schedule metadata calculation after upload
+            username: aredzo
+            password: ${{ secrets.BINTRAY_KEY }}
+            repository: https://api.bintray.com/maven/aredzo/mtracker/mtracker-sso-external
+#         - name: Upload packages with contracts to Bintray
+#           uses: bpicode/github-action-upload-bintray@master
+#           with:
+#             file: ./artifacts/*.jar
+#             api_user: example-user
+#             api_key: ${{ secrets.BINTRAY_KEY }} # An API key can be obtained from the user profile page.
+#             repository_user: aredzo
+#             repository: mtracker
+#             package: mtracker-sso-external
+#             version: '0.0.1'
+#             publish: 1
+#             upload_path: artifact/test
+#             calculate_metadata: true # Schedule metadata calculation after upload
