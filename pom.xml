@@ -4,7 +4,7 @@
 
 	<groupId>com.aredzo</groupId>
 	<artifactId>mtracker-sso-external-contracts</artifactId>
-	<version>0.0.1.BUILD-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>Mtracker SSO Stubs</name>
 	<description>POM used to install locally stubs for consumer side</description>
