@@ -1,0 +1,29 @@
+name: Test Producer on Pull Request
+
+on:
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  test-producer:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout contracts
+        uses: actions/checkout@v2
+        with:
+          path: contracts
+      - name: Build and install contracts
+        with:
+          path: contracts
+          run: mvn -B install
+
+      - name: Checkout mtracker-sso repo
+        uses: actions/checkout@v2
+        with:
+          repository:  aredzo/demo-m-tracker-sso 
+          path: sso
+          ref: "develop"
+      - name: Test mtracker-sso with new contracts
+        run: mvn -B clean verify -Dcontract.source=LOCAL -Dtest=RestTest
