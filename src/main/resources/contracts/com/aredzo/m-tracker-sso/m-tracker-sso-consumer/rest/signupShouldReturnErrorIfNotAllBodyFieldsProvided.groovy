@@ -17,6 +17,7 @@ Then:
                 method POST()
                 url "/sso/v1/users/signup"
                 body(
+                        email: null,
                         password: anyNonEmptyString()
                 )
                 headers {
@@ -51,7 +52,8 @@ Then:
                 method POST()
                 url "/sso/v1/users/signup"
                 body(
-                        email: anyEmail()
+                        email: anyEmail(),
+                        password: null
                 )
                 headers {
                     contentType applicationJson()
@@ -84,6 +86,7 @@ Then:
                 method POST()
                 url "/sso/v1/int/users/signup"
                 body(
+                        email: null,
                         password: anyNonEmptyString()
                 )
                 headers {
@@ -118,7 +121,8 @@ Then:
                 method POST()
                 url "/sso/v1/int/users/signup"
                 body(
-                        email: anyEmail()
+                        email: anyEmail(),
+                        password: null
                 )
                 headers {
                     contentType applicationJson()
