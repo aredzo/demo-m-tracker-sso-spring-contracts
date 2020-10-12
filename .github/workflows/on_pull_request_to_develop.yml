@@ -15,9 +15,7 @@ jobs:
         with:
           path: contracts
       - name: Build and install contracts
-        with:
-          path: contracts
-          run: mvn -B install
+        run: cd contracts && mvn -B install 
 
       - name: Checkout mtracker-sso repo
         uses: actions/checkout@v2
@@ -26,4 +24,4 @@ jobs:
           path: sso
           ref: "develop"
       - name: Test mtracker-sso with new contracts
-        run: mvn -B clean verify -Dcontract.source=LOCAL -Dtest=RestTest
+        run: cd sso && mvn -B clean verify -Dcontract.source=LOCAL -Dtest=RestTest
