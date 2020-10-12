@@ -68,5 +68,13 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	<distributionManagement>
+    <repository>
+        <id>bintray-aredzo-mtracker</id>
+        <name>aredzo-mtracker</name>
+        <url>https://api.bintray.com/maven/aredzo/mtracker/mtracker-sso-external/;publish=1</url>
+    </repository>
+</distributionManagement>
 </project>
 
