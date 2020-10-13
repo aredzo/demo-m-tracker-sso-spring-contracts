@@ -70,11 +70,16 @@
 	</build>
 	
 	<distributionManagement>
-    <repository>
-        <id>bintray-aredzo-mtracker</id>
-        <name>aredzo-mtracker</name>
-        <url>https://api.bintray.com/maven/aredzo/mtracker/mtracker-sso-external/;publish=1</url>
-    </repository>
-</distributionManagement>
+		<repository>
+			<id>bintray-aredzo-mtracker</id>
+			<name>aredzo-mtracker</name>
+			<url>https://api.bintray.com/maven/aredzo/mtracker/mtracker-sso-external/;publish=1</url>
+		</repository>
+		<repository>
+			<id>github</id>
+			<name>aredzo-mtracker-sso-external</name>
+			<url>https://maven.pkg.github.com/aredzo/demo-m-tracker-sso-spring-contracts/</url>
+		</repository>
+	</distributionManagement>
 </project>
 
