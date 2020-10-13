@@ -1,0 +1,29 @@
+name: Test Producer on Pull Request
+
+on:
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  test-producer:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout contracts
+        uses: actions/checkout@v2
+        with:
+          path: contracts
+      - name: Build and install contracts
+        run: mvn -B install
+        working-directory: contracts
+
+      - name: Checkout mtracker-sso
+        uses: actions/checkout@v2
+        with:
+          repository:  aredzo/demo-m-tracker-sso 
+          path: sso
+          ref: "develop"
+      - name: Test mtracker-sso with new contracts
+        #run only contract tests
+        run: mvn -B clean verify -Dcontract.source=LOCAL -Dtest=RestTest
+        working-directory: sso
