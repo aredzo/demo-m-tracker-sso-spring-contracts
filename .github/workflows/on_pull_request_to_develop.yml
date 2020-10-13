@@ -15,7 +15,7 @@ jobs:
         with:
           path: contracts
       - name: Build and install contracts
-        run: mvn -B install && pwd && ll
+        run: mvn -B install && pwd && ls
         working-directory: contracts
 
       - name: Checkout mtracker-sso repo
@@ -25,5 +25,5 @@ jobs:
           path: sso
           ref: "develop"
       - name: Test mtracker-sso with new contracts
-        run: mvn -B clean verify -Dcontract.source=LOCAL -Dtest=RestTest  && pwd && ll
+        run: mvn -B clean verify -Dcontract.source=LOCAL -Dtest=RestTest  && pwd && ls
         working-directory: sso
