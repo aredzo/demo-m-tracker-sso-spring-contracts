@@ -72,11 +72,6 @@
 	<profiles>
 		<profile>
 			<id>bintray</id>
-			<activation>
-				<property>
-					<name>BINTRAY_USERNAME</name>
-				</property>
-			</activation>
 			<distributionManagement>
 				<repository>
 					<id>bintray-aredzo-mtracker</id>
@@ -87,11 +82,6 @@
 		</profile>
 		<profile>
 			<id>github</id>
-			<activation>
-				<property>
-					<name>GITHUB_TOKEN</name>
-				</property>
-			</activation>
 			<distributionManagement>
 				<repository>
 					<id>github</id>
