@@ -6,7 +6,6 @@ on:
 
 jobs:
   test-producer:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
     steps:
@@ -15,15 +14,16 @@ jobs:
         with:
           path: contracts
       - name: Build and install contracts
-        run: mvn -B install && pwd && ls
+        run: mvn -B install
         working-directory: contracts
 
-      - name: Checkout mtracker-sso repo
+      - name: Checkout mtracker-sso
         uses: actions/checkout@v2
         with:
           repository:  aredzo/demo-m-tracker-sso 
           path: sso
           ref: "develop"
       - name: Test mtracker-sso with new contracts
-        run: mvn -B clean verify -Dcontract.source=LOCAL -Dtest=RestTest  && pwd && ls
+        #run only contract tests
+        run: mvn -B clean verify -Dcontract.source=LOCAL -Dtest=RestTest
         working-directory: sso
